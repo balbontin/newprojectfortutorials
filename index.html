@@ -104,11 +104,11 @@
         }
 
         .hero {
-            padding-top: 120px;
-            min-height: 100vh;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
             align-items: center;
-            background: linear-gradient(180deg, rgba(43, 58, 103, 0.03) 0%, rgba(107, 77, 230, 0.03) 100%);
+            min-height: 90vh;
         }
 
         .hero-content {
@@ -130,6 +130,13 @@
             color: var(--text);
             opacity: 0.9;
             margin-bottom: 2.5rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 24px;
+            overflow: hidden;
         }
 
         .solutions {
@@ -160,15 +167,16 @@
         }
 
         .solution-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .solution-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--shadow);
+        .solution-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .solution-icon {
@@ -239,17 +247,69 @@
             display: block;
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+        /* Image Placeholder Animations */
+        .image-placeholder {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 300px;
+            margin: 2rem 0;
+        }
 
-            h1 {
-                font-size: 3rem;
-            }
+        .image-placeholder::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.6) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shimmer 2s infinite;
+            transform: translateX(-100%);
+        }
 
-            .solutions-grid {
+        .image-placeholder.generating::after {
+            content: "AI Generating...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        @media (max-width: 968px) {
+            .hero {
                 grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -269,12 +329,13 @@
 
     <main>
         <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Intelligent AI Agents for Enterprise Success</h1>
-                    <p class="hero-subtitle">Elevate your operations with Agentil AI's intelligent solutions, crafted specifically for Education, Healthcare, and Hospitality sectors.</p>
-                    <a href="#contact" class="cta-button">Schedule a Demo</a>
-                </div>
+            <div class="hero-content">
+                <h1>Intelligent AI Agents for Enterprise Success</h1>
+                <p class="hero-subtitle">Elevate your operations with Agentil AI's intelligent solutions, crafted specifically for Education, Healthcare, and Hospitality sectors.</p>
+                <a href="#contact" class="cta-button">Schedule a Demo</a>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder generating"></div>
             </div>
         </section>
 
@@ -286,16 +347,25 @@
                 </div>
                 <div class="solutions-grid">
                     <div class="solution-card">
+                        <div class="solution-image">
+                            <div class="image-placeholder"></div>
+                        </div>
                         <div class="solution-icon">🎓</div>
                         <h3>Education</h3>
                         <p>Personalized learning assistants, administrative automation, and student engagement analytics to transform the educational experience.</p>
                     </div>
                     <div class="solution-card">
+                        <div class="solution-image">
+                            <div class="image-placeholder"></div>
+                        </div>
                         <div class="solution-icon">⚕️</div>
                         <h3>Healthcare</h3>
                         <p>Intelligent patient care coordination, medical data analysis, and administrative workflow optimization for healthcare providers.</p>
                     </div>
                     <div class="solution-card">
+                        <div class="solution-image">
+                            <div class="image-placeholder"></div>
+                        </div>
                         <div class="solution-icon">🏨</div>
                         <h3>Hospitality</h3>
                         <p>Guest experience enhancement, operational efficiency, and predictive service optimization for the hospitality industry.</p>
