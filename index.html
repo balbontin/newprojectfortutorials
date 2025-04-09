@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentil AI - Intelligent Enterprise Solutions</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap">
+    <style>
+        :root {
+            --primary: #2B3A67;
+            --secondary: #6B4DE6;
+            --accent: #5271FF;
+            --text: #2C3E50;
+            --background: #FFFFFF;
+            --card-bg: #F8FAFC;
+            --gradient-1: linear-gradient(135deg, #2B3A67, #6B4DE6);
+            --gradient-2: linear-gradient(135deg, #5271FF, #6B4DE6);
+            --shadow: rgba(43, 58, 103, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .hero {
+            padding-top: 120px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(43, 58, 103, 0.03) 0%, rgba(107, 77, 230, 0.03) 100%);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text);
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+        }
+
+        .solutions {
+            padding: 8rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            padding: 6rem 0;
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-item h4 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            opacity: 0.9;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 4rem;
+        }
+
+        .footer-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-content p, .footer-content a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Agentil <span>AI</span></a>
+            <div class="nav-links">
+                <a href="#solutions">Solutions</a>
+                <a href="#about">About</a>
+                <a href="#industries">Industries</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Intelligent AI Agents for Enterprise Success</h1>
+                    <p class="hero-subtitle">Elevate your operations with Agentil AI's intelligent solutions, crafted specifically for Education, Healthcare, and Hospitality sectors.</p>
+                    <a href="#contact" class="cta-button">Schedule a Demo</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="solutions" id="solutions">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Industry-Specific Solutions</h2>
+                    <p>Powered by Agentil AI's advanced intelligence platform</p>
+                </div>
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">🎓</div>
+                        <h3>Education</h3>
+                        <p>Personalized learning assistants, administrative automation, and student engagement analytics to transform the educational experience.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">⚕️</div>
+                        <h3>Healthcare</h3>
+                        <p>Intelligent patient care coordination, medical data analysis, and administrative workflow optimization for healthcare providers.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">🏨</div>
+                        <h3>Hospitality</h3>
+                        <p>Guest experience enhancement, operational efficiency, and predictive service optimization for the hospitality industry.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>99.9%</h4>
+                        <p>Uptime Guarantee</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>500+</h4>
+                        <p>Enterprise Clients</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>45%</h4>
+                        <p>Average Efficiency Gain</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>24/7</h4>
+                        <p>Support & Monitoring</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h3>Agentil AI</h3>
+                <p>Transforming industries through intelligent AI solutions.</p>
+            </div>
+            <div>
+                <h3>Solutions</h3>
+                <a href="#">Education AI</a>
+                <a href="#">Healthcare AI</a>
+                <a href="#">Hospitality AI</a>
+            </div>
+            <div>
+                <h3>Company</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact</a>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <p>hello@agentil.ai</p>
+                <p>+1 (888) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
